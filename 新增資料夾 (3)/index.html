@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>行程規劃網頁</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+        }
+        body {
+            font-family: sans-serif;
+            color: white;
+            background: url('images/image0.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+        }
+        .progress-bar {
+            width: 60px;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            z-index: 10;
+        }
+        .progress-bar div {
+            width: 10px;
+            height: 10px;
+            background-color: #00ffff;
+            border-radius: 50%;
+            margin: 10px 0;
+            transition: background-color 0.3s;
+        }
+        .progress-bar div.active {
+            background-color: #ffcc00;
+        }
+        .content {
+            margin-left: 60px;
+            width: calc(100% - 60px);
+        }
+        section {
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: rgba(0, 0, 0, 0.5);
+            text-align: center;
+            scroll-margin-top: 20px;
+        }
+        a, h1, p, img {
+            margin: 10px;
+            z-index: 1;
+        }
+        a {
+            color: #00ffff;
+            text-decoration: underline;
+        }
+        a:hover {
+            color: #ffcc00;
+        }
+        img {
+            max-width: 300px;
+            border-radius: 8px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            const dots = document.querySelectorAll('.progress-bar div');
+            window.addEventListener('scroll', () => {
+                const scrollPos = window.scrollY + window.innerHeight / 2;
+                sections.forEach((section, index) => {
+                    if (scrollPos >= section.offsetTop) {
+                        dots.forEach(dot => dot.classList.remove('active'));
+                        dots[index].classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <!--<div class="progress-bar">
+        <div class="active"></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="content">
+        <!--<section>
+            <h1>我的行程規劃</h1>
+            <p>歡迎來到我的行程介紹頁面</p>
+        </section>
+
+        <section>
+            <h1>第一天：呆整天</h1>
+            <p>美食、夜市、101！</p>
+            <a href="https://maps.app.goo.gl/RKxYdLivr5GPdXvJ8">
+                <img src="images/2.jpg">
+            </a>
+            <div>
+                <a href="https://maps.app.goo.gl/RKxYdLivr5GPdXvJ8">開啟導航</a>
+            </div>
+        </section>
+
+        <section>
+            <h1>第二站：台中</h1>
+            <p>逢甲夜市、高美濕地</p>
+            <img src="images/taichung.jpg" alt="台中圖片">
+            <a href="https://travel.taichung.gov.tw/">更多資訊</a>
+        </section>-->
+    </div>
+</body>
+</html>
